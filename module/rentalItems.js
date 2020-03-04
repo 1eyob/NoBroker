@@ -20,11 +20,7 @@ const RentalItemSchema = mongoose.Schema({
 
     },
 
-    price: {
-        type: Date,
-        required: true,
-        minLength: 1,
-    },
+
     rentalFee: {
         type: Number,
         min: 0
@@ -33,7 +29,7 @@ const RentalItemSchema = mongoose.Schema({
 
 })
 
-const RentalItem = mongoose.model('Items', RentalItemSchema)
+const RentalItem = mongoose.model('RentalItems', RentalItemSchema)
 
 exports.RentalItemSchema = RentalItemSchema
-exports.RentalItem = REntalItem
+exports.RentalItem = RentalItem
