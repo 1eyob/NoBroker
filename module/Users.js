@@ -20,7 +20,7 @@ const userSchema = mongoos.Schema({
     },
     email: {
         type: String,
-        //  required:true,
+        required: true,
         minLength: 6,
         maxLength: 20,
     },

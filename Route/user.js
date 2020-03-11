@@ -11,7 +11,25 @@ route.get('/', async(req, res) => {
 
 })
 route.get('/:id', async(req, res) => {
-    let user = await User.findById(req.params.id);
+
+    let user = await User.findOne({ "email": req.body.email });
+    if (!user) return res.status(401).send("user not found")
+    res.send(user)
+
+    return res.send("nooo")
+        //user = await User.findOne({"email":body.email})
+    if (!user) return res.status(401).send("user not found")
+    res.send(user)
+
+})
+route.get('/login', async(req, res) => {
+    print("working")
+    let user = await User.findOne({ "email": req.headers('email') });
+    if (!user) return res.status(401).send("user not found")
+    res.send(user)
+
+    return res.send("nooo")
+        //user = await User.findOne({"email":body.email})
     if (!user) return res.status(401).send("user not found")
     res.send(user)
 
@@ -20,7 +38,7 @@ route.put('/:id', async(req, res) => {
     let user = await User.findById(req.params.id);
     if (!user) return res.status(401).send("user not found")
     user.set({
-        name: req.body.name,
+        name: req.hearder('x-name'),
         email: req.body.email,
         password: req.body.password,
         phone: req.body.phone,

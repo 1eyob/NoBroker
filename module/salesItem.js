@@ -19,19 +19,19 @@ const SelesItemSchema = mongoose.Schema({
         required: true,
         minLength: 1,
     },
-    user: {
-        type: [mongoose.Schema({
-            name: String,
-            email: String,
-            phone: String,
+    // user: {
+    //     type: [mongoose.Schema({
+    //         name: String,
+    //         email: String,
+    //         phone: String,
 
-        })]
-    }
+    //     })]
+    // }
 
 
 })
 
-const SelesItem = mongoose.model('Items', SelesItemSchema)
+const SelesItem = mongoose.model('SalesItems', SelesItemSchema)
 
 exports.SelesItemSchema = SelesItemSchema
 exports.SelesItem = SelesItem
