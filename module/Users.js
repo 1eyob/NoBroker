@@ -12,6 +12,9 @@ mongoos.connect('mongodb://localhost/Nobroker')
 
 
 const userSchema = mongoos.Schema({
+    image: {
+        type: Buffer
+    },
     name: {
         type: String,
         required: true,
@@ -39,7 +42,8 @@ const userSchema = mongoos.Schema({
     isOrganization: {
         type: Boolean,
         defualt: false
-    }
+    },
+
 
 })
 

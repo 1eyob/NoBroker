@@ -30,7 +30,12 @@ const itemSchema = mongoose.Schema({
             email: String,
             address: String
         })
+    },
+    image: {
+        type: Buffer
     }
+
+
     // price: {
     //     type: Number,
     //     required: true,

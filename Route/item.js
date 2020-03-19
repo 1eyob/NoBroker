@@ -1,7 +1,12 @@
 const express = require('express')
 const { Item } = require('../module/items')
 const { User } = require('../module/Users')
+const multer = require('multer')
 const route = express.Router()
+
+const upload = multer({
+    limits: 10000
+})
 
 route.use(express.json())
 
@@ -32,6 +37,20 @@ route.put('/:id', async(req, res) => {
             address: user.address
         }
     })
+    try {
+        await item.save()
+        res.send(item)
+    } catch (err) {
+        res.status(404).send(err.message)
+    }
+
+
+})
+route.put('/:id/image', upload.single('image'), async(req, res) => {
+
+    let item = await Item.findById(req.params.id)
+    if (!item) return res.status(401).send("item not found ")
+    item.image = req.file.buffer
     try {
         await item.save()
         res.send(item)
